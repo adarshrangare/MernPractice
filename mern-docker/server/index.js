@@ -1,11 +1,17 @@
-const express = require("express");
+// nodejs core modules
+const express = require("express"); // express library
+const fs = require("fs"); // filessystem
 
+// server creation
 const app = express();
 
-app.use("/", (req, res) => {
-  res.send("<h1>Hello!  Welcome to NodeJs</h1>");
-});
+// router
+const userRouter = require("./routes/users");
 
+// routes
+app.use("/users", userRouter.router);
+
+// port listeners
 app.listen(8080, () => {
   console.log("Server Successfully Running On:8080");
 });
